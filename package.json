@@ -1,0 +1,19 @@
+{
+    "name": "Shop-NaMu",
+    "version": "1.0.0",
+    "description": "Web app shop make by NodeJS",
+    "main": "index.js",
+    "scripts": {
+        "start": "nodemon index.js",
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "NamNV",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.16.4",
+        "pug": "^2.0.3"
+    },
+    "devDependencies": {
+        "nodemon": "^1.18.11"
+    }
+}
