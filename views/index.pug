@@ -26,31 +26,50 @@ block header
                 input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
                 button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
 block content
-    .w-75.p-3.container
-        .card-group
-            .card
-                img.card-img-top(src='.../100px180/', alt='Card image cap')
-                .card-body
-                    h5.card-title Card title
-                    p.card-text
-                        | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                .card-footer
-                    small.text-muted Last updated 3 mins ago
-            .card
-                img.card-img-top(src='.../100px180/', alt='Card image cap')
-                .card-body
-                    h5.card-title Card title
-                    p.card-text This card has supporting text below as a natural lead-in to additional content.
-                .card-footer
-                    small.text-muted Last updated 3 mins ago
-            .card
-                img.card-img-top(src='.../100px180/', alt='Card image cap')
-                .card-body
-                    h5.card-title Card title
-                    p.card-text
-                        | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                .card-footer
-                    small.text-muted Last updated 3 mins ago
+    block intro
+        .w-75.p-3.h-65.container
+            #demo.h-30.carousel.slide(data-ride='carousel')
+                ul.carousel-indicators
+                    li.active(data-target='#demo', data-slide-to='0')
+                    li(data-target='#demo', data-slide-to='1')
+                    li(data-target='#demo', data-slide-to='2')
+                .carousel-inner
+                    .carousel-item.active
+                        img(src='a.jpg', alt='Los Angeles', width='1100', height='300')
+                    .carousel-item
+                        img(src='b.jpg', alt='Chicago', width='1100', height='300')
+                    .carousel-item
+                        img(src='c.jpg', alt='New York', width='1100', height='300')
+                a.carousel-control-prev(href='#demo', data-slide='prev')
+                    span.carousel-control-prev-icon
+                a.carousel-control-next(href='#demo', data-slide='next')
+                    span.carousel-control-next-icon
+    block list-products
+        .w-75.p-3.container
+            .card-group
+                .card
+                    img.card-img-top(src='.../100px180/', alt='Card image cap')
+                    .card-body
+                        h5.card-title Card title
+                        p.card-text
+                            | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
+                    .card-footer
+                        small.text-muted Last updated 3 mins ago
+                .card
+                    img.card-img-top(src='.../100px180/', alt='Card image cap')
+                    .card-body
+                        h5.card-title Card title
+                        p.card-text This card has supporting text below as a natural lead-in to additional content.
+                    .card-footer
+                        small.text-muted Last updated 3 mins ago
+                .card
+                    img.card-img-top(src='.../100px180/', alt='Card image cap')
+                    .card-body
+                        h5.card-title Card title
+                        p.card-text
+                            | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
+                    .card-footer
+                        small.text-muted Last updated 3 mins ago
 block footer
     footer.page-footer.cyan.darken-3
         .container

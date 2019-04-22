@@ -11,4 +11,5 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/router',demoRouter);
+app.use(express.static('imgs'));
 app.listen(3000);
