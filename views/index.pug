@@ -1,30 +1,6 @@
 extends ./layouts/common
 block header
-    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-        a.navbar-brand(href='#') NaMu Shop
-        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
-            span.navbar-toggler-icon
-        #navbarSupportedContent.collapse.navbar-collapse
-            ul.navbar-nav.mr-auto
-                li.nav-item.active
-                    a.nav-link(href='#')
-                        | Home 
-                        span.sr-only (current)
-                li.nav-item
-                    a.nav-link(href='#') Link
-                li.nav-item.dropdown
-                    a#navbarDropdown.nav-link.dropdown-toggle(href='#', role='button', data-toggle='dropdown', aria-haspopup='true', aria-expanded='false')
-                        | Dropdown
-                    .dropdown-menu(aria-labelledby='navbarDropdown')
-                        a.dropdown-item(href='#') Action
-                        a.dropdown-item(href='#') Another action
-                        .dropdown-divider
-                        a.dropdown-item(href='#') Something else here
-                li.nav-item
-                    a.nav-link.disabled(href='#') Disabled
-            form.form-inline.my-2.my-lg-0
-                input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
-                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+    include ./layouts/header
 block content
     block intro
         .w-75.p-3.h-65.container
@@ -71,13 +47,6 @@ block content
                     .card-footer
                         small.text-muted Last updated 3 mins ago
 block footer
-    footer.page-footer.cyan.darken-3
-        .container
-            ul.list-inline.text-center
-                a.fa.fa-facebook(href='#')
-                a.fa.fa-twitter(href='#')
-                a.fa.fa-google(href='#')
-                a.fa.fa-youtube(href='#')
-                a.fa.fa-instagram(href='#')
+    include ./layouts/footer
 
 

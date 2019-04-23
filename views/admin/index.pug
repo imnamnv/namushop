@@ -1,0 +1,31 @@
+extends ../layouts/common
+block header
+    include ../layouts/header
+block content
+    .container-fluid.text-center.mt-5.mb-5
+        h2 Admin
+        br
+        .row
+            .col-sm-4
+                span.glyphicon.glyphicon-off
+                a.admin-function(href='/node-admin/carousel') Change Carousel Introduce Web
+            .col-sm-4
+                span.glyphicon.glyphicon-heart
+                a.admin-function(href='#') Change Introduce Web
+            .col-sm-4
+                span.glyphicon.glyphicon-lock
+                a.admin-function(href='#') Change Introduce Web
+        br
+        br
+        .row
+            .col-sm-4
+                span.glyphicon.glyphicon-leaf
+                a.admin-function(href='#') Change Introduce Web
+            .col-sm-4
+                span.glyphicon.glyphicon-certificate
+                a.admin-function(href='#') Change Introduce Web
+            .col-sm-4
+                span.glyphicon.glyphicon-wrench
+                a.admin-function(href='#') Change Introduce Web
+block footer    
+    include ../layouts/footer

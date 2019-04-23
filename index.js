@@ -1,6 +1,10 @@
 const express = require('express');
 const app = express();
 const demoRouter = require('./routes/demo-router');
+const adminRouter = require('./routes/admin.router/admin');
+
+//set static file
+app.use(express.static('imgs'));
 
 //set pug
 app.set('view engine', 'pug');
@@ -11,5 +15,6 @@ app.get('/',(req,res)=>{
 })
 
 app.use('/router',demoRouter);
-app.use(express.static('imgs'));
+app.use('/node-admin',adminRouter);
+
 app.listen(3000);
