@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const demoRouter = require('./routes/demo-router');
 const adminRouter = require('./routes/admin.router/admin');
+const mongoose = require('mongoose');
+
+//set mongoose
+mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true});
 
 //set static file
 app.use(express.static('imgs'));
