@@ -5,7 +5,7 @@ const adminRouter = require('./routes/admin.router/admin');
 const mongoose = require('mongoose');
 
 //set mongoose
-mongoose.connect(process.env.MONGO_URL,{useNewUrlParser: true});
+mongoose.connect('mongodb://localhost/namu-shop',{ useNewUrlParser: true });
 
 //set static file
 app.use(express.static('imgs'));
@@ -18,6 +18,7 @@ app.get('/',(req,res)=>{
     res.render('index');
 })
 
+//set router
 app.use('/router',demoRouter);
 app.use('/node-admin',adminRouter);
 
