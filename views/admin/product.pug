@@ -1,0 +1,33 @@
+extends ../layouts/common
+block header
+    include ../layouts/header
+block content
+    .w-75.p-3.h-65.container
+        p Carousel
+        form.mt-5(action="/node-admin/product",method="POST", enctype="multipart/form-data")
+            .form-group
+                label(for='uname') Product Name:
+                input#uname.form-control(type='text', placeholder='Enter Name', name='name', required='')
+                .valid-feedback Valid.
+                .invalid-feedback Please fill out this field.
+            .form-group
+                label(for='c') Count:
+                input#c.form-control(type='text', placeholder='Enter Count', name='count', required='')
+                .valid-feedback Valid.
+                .invalid-feedback Please fill out this field.
+            .form-group
+                label(for='p') Price:
+                input#p.form-control(type='text', placeholder='Enter Price', name='price', required='')
+                .valid-feedback Valid.
+                .invalid-feedback Please fill out this field.
+            .form-group
+                label(for='d') Detail:
+                input#d.form-control(type='text', placeholder='Enter Detail', name='detail', required='')
+                .valid-feedback Valid.
+                .invalid-feedback Please fill out this field.  
+            .form-group
+                label() Carousel 3:
+                input.d-flex(name='avatar',type='file')
+            button.btn.btn-primary(type='submit') Submit
+block footer    
+    //include ../layouts/footer

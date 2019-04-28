@@ -11,11 +11,11 @@ block content
                     li(data-target='#demo', data-slide-to='2')
                 .carousel-inner
                     .carousel-item.active
-                        img(src='a.jpg', alt='Los Angeles', width='1100', height='300')
+                        img(src=""+carousels[carousels.length-1].path, width='1100', height='300')
                     .carousel-item
-                        img(src='b.jpg', alt='Chicago', width='1100', height='300')
+                        img(src=""+carousels[carousels.length-2].path, width='1100', height='300')
                     .carousel-item
-                        img(src='c.jpg', alt='New York', width='1100', height='300')
+                        img(src=""+carousels[carousels.length-3].path, width='1100', height='300')
                 a.carousel-control-prev(href='#demo', data-slide='prev')
                     span.carousel-control-prev-icon
                 a.carousel-control-next(href='#demo', data-slide='next')

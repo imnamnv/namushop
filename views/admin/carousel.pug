@@ -3,18 +3,18 @@ block header
     include ../layouts/header
 block content
     .w-75.p-3.h-65.container
-        form.mt-5
         p Carousel
-        p= carousels[0].name
+        form.mt-5(action="/node-admin/carousel",method="POST", enctype="multipart/form-data")
             .form-group
                 label(style="font-weight:bold;font-size:20px") Carousel 1:
-                input#file.ml-5(type='file')
+                input#file.ml-5(name='carousels',type='file')
             .form-group
                 label(style="font-weight:bold;font-size:20px") Carousel 2:
-                input#file.ml-5(type='file')
-            .checkbox
+                input#file.ml-5(name='carousels',type='file')
+            .form-group
                 label(style="font-weight:bold;font-size:20px") Carousel 3:
-                input#file.ml-5(type='file')
-            button.btn.btn-primary.mt-5(type='submit') Submit
+                input#file.ml-5(name='carousels',type='file')
+            button.btn.btn-primary.mt-0(type='submit') Set Carouse
+
 block footer    
     //include ../layouts/footer
