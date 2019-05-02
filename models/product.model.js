@@ -7,10 +7,9 @@ var product = mongoose.Schema({
     detail: String,
     count: Number,
     status: Boolean,
-    date: {type: Date, default: Date.now(),
-    }
+    date: {type: Date, default: Date.now(),}
 });
 
-var Product = mongoose.model('Product',product, 'product');
+var Product = mongoose.model('Product',product, 'products');
 module.exports = Product;
 

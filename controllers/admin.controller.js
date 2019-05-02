@@ -20,12 +20,7 @@ module.exports.carousel = (req, res) => {
 //product page
 module.exports.product = (req, res) => {
     res.render('../views/admin/product.pug');
-    // Product.find().then(function (products) {
-    //     console.log(products);
-    //     res.render('../views/admin/product.pug', {
-    //         products: products
-    //     });
-    // });
+    
 }
 
 //Upload Carousel
@@ -48,8 +43,22 @@ module.exports.uploadImgs1 = (req, res) => {
 
 //Upload products
 module.exports.uploadProduct = (req,res)=>{
-    console.log(req.body);
-    console.log(req.file);
+    let product = new Product({
+        name: req.body.name,
+        path: req.file.path.split('\\').slice(1).join('\\'),
+        price: Number(req.body.price),
+        detail: req.body.detail,
+        count: Number(req.body.count),
+        status: true,
+        date:  Date.now()
+    });
+    if(product.count <=0){
+        product.status = false;
+    }
+    product.save().then((data)=>{
+        console.log(data);
+    });
+    res.redirect('/node-admin');
 
 }
 

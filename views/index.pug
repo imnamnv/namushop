@@ -22,31 +22,21 @@ block content
                     span.carousel-control-next-icon
     block list-products
         .w-75.p-3.container
-            .card-group
-                .card
-                    img.card-img-top(src='.../100px180/', alt='Card image cap')
-                    .card-body
-                        h5.card-title Card title
-                        p.card-text
-                            | This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.
-                    .card-footer
-                        small.text-muted Last updated 3 mins ago
-                .card
-                    img.card-img-top(src='.../100px180/', alt='Card image cap')
-                    .card-body
-                        h5.card-title Card title
-                        p.card-text This card has supporting text below as a natural lead-in to additional content.
-                    .card-footer
-                        small.text-muted Last updated 3 mins ago
-                .card
-                    img.card-img-top(src='.../100px180/', alt='Card image cap')
-                    .card-body
-                        h5.card-title Card title
-                        p.card-text
-                            | This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.
-                    .card-footer
-                        small.text-muted Last updated 3 mins ago
+            each row in products
+                .card-deck.mt-3
+                    each col in row
+                        if col !=null
+                            .card.bg
+                                .card-body.text-center.p-0
+                                    a(href='/products/'+col._id)
+                                        img.img-pro.card-img-top(src=''+col.path, alt=''+col.name)
+                                    a.w-100.btn(href='/products/'+col._id, role='button') #{col.name}
+                                    a.w-100.btn(href='/products/'+col._id, role='button') #{col.price}
+                        if(col==null)
+                            .card.bg.null-pro
+                                .card-body.text-center.p-0
 block footer
     include ./layouts/footer
+    
 
 
