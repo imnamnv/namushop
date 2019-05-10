@@ -20,21 +20,26 @@ block content
                     span.carousel-control-prev-icon
                 a.carousel-control-next(href='#demo', data-slide='next')
                     span.carousel-control-next-icon
+    h1.category.m-5 CATEGORY                
+    block category
+        include ./layouts/category         
+    h1.category.m-5 TOP 5 PRODUCTS          
     block list-products
         .w-75.p-3.container
-            each row in products
-                .card-deck.mt-3
-                    each col in row
-                        if col !=null
-                            .card.bg
-                                .card-body.text-center.p-0
-                                    a(href='/products/'+col._id)
-                                        img.img-pro.card-img-top(src=''+col.path, alt=''+col.name)
-                                    a.w-100.btn(href='/products/'+col._id, role='button') #{col.name}
-                                    a.w-100.btn(href='/products/'+col._id, role='button') #{col.price}
-                        if(col==null)
-                            .card.bg.null-pro
-                                .card-body.text-center.p-0
+            .card-deck.mt-3
+                each col in products
+                    if col !=null
+                        .card.bg
+                            .card-body.text-center.p-0
+                                a(href='/products/'+col._id)
+                                    img.img-pro.card-img-top(src=''+col.path, alt=''+col.name)
+                                a.w-100.btn(href='/products/'+col._id, role='button') #{col.name}
+                                a.w-100.btn(href='/products/'+col._id, role='button') #{col.price}
+                    if(col==null)
+                        .card.bg.null-pro
+                            .card-body.text-center.p-0
+            a.w-25.btn-center.btn.btn-outline-info(href='/products') See More                     
+                           
 block footer
     include ./layouts/footer
     

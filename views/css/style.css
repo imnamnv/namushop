@@ -21,7 +21,8 @@
 /* --------------------------------------- */
 /* header */
 .nav-item a{
-  font-size: 20px;
+  font-size: 25px;
+  font-family: "Pacifico", cursive;
 }
 .nav-item a:hover{
   color: red !important;
@@ -61,6 +62,50 @@
 
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
 
+.category{
+    font-family: "Pacifico", cursive;
+    font-size: 40px;
+    line-height: 20px;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 16px;
+    text-align: center;
+}
+
+.img__wrap {
+  position: relative;
+}
+
+.img__wrap:hover .img__description {
+
+  visibility: visible;
+  opacity: 1;
+}
+.img__wrap:hover .opacity {
+  opacity:0.7;
+}
+
+
+.img__description{
+  position: absolute;
+  bottom: -50px;
+  left: 0;
+  font-family: "Pacifico", cursive;
+  right: 0;
+  color: rgb(0, 0, 0);
+  visibility: hidden;
+  opacity: 0;
+  font-size: 40px;
+  font-weight: 400;
+  /* transition effect. not necessary */
+  transition: opacity .2s, visibility .2s;
+}
+
+.btn-center{
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
 
 /* --------------------------------------- */
 /* --------------------------------------- */

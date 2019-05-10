@@ -10,7 +10,6 @@ module.exports.index = (req, res) => {
 //carousel page
 module.exports.carousel = (req, res) => {
     Carousel.find().then(function (carousels) {
-        console.log(carousels);
         res.render('../views/admin/carousel.pug', {
             carousels: carousels
         });
