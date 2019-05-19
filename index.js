@@ -3,7 +3,9 @@ const app = express();
 const bodyParser = require('body-parser');
 const homeRouter = require('./routes/home.router');
 const adminRouter = require('./routes/admin.router/admin');
+const userRouter = require('./routes/user.router/login');
 const mongoose = require('mongoose');
+const passport = require('./authendication/login-google');
 
 //set body-parser
 app.use(bodyParser.json());
@@ -22,5 +24,6 @@ app.set('views','views');
 //set router
 app.use('/',homeRouter);
 app.use('/node-admin',adminRouter);
+app.use('/user',userRouter);
 
 app.listen(3000);

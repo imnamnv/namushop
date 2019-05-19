@@ -11,7 +11,7 @@ nav(style="background:white !important").navbar.navbar-expand-lg.navbar-light.bg
                         span.sr-only (current)
                 li.dropdown.nav-item.active
                     a.nav-link(href='#').pr-5
-                        | Home 
+                        | Category 
                         span.sr-only (current)
                     .dropdown-content
                         a(href='#') Link 1
@@ -19,8 +19,11 @@ nav(style="background:white !important").navbar.navbar-expand-lg.navbar-light.bg
                         a(href='#') Link 3
                 li.nav-item.active
                     a.nav-link(href='#').pr-5
-                        | Home 
-                        span.sr-only (current)        
+                        | Contact
+                        span.sr-only (current)
+            div(style='width:6% !important')   
+                a(href='/user/login')               
+                    img.img-pro.card-img-top(src='./imgs/account.png',style='width:50%;height:6%')
             form.form-inline.my-2.my-lg-0
                 input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
                 button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search

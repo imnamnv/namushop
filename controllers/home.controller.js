@@ -16,7 +16,7 @@ module.exports.index = (req, res) => {
                 }
                 total.push(array);
             }
-            console.log(total[0]);
+            //console.log(total[0]);
             res.render('../views/index.pug', {
                 carousels: carousels,
                 products: total[0]
@@ -51,7 +51,7 @@ module.exports.listPro = (req, res) => {
             }
             total.push(array);
         }
-        console.log(total[0]);
+        //console.log(total[0]);
         res.render('../views/products/list-product.pug', {
             products: total
         });
