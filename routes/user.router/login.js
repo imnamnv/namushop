@@ -21,5 +21,7 @@ router.get('/detail',passport.authenticate('google'),(req,res)=>{
     res.redirect('/user');
 });
 router.get('/',authCheck,controller.detail);
+router.post('/',authCheck,controller.addInformation);
+
 
 module.exports = router;

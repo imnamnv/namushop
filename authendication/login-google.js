@@ -19,13 +19,15 @@ passport.use(
         clientID: key.google.clientID,
         clientSecret: key.google.clientSecret
     }, (accessToken, refreshToken, profile, done) => {
-        //console.log(profile);
-        //console.log(profile.photos[0].value)
+        //find account in database
         Account.findOne({ idGoogle: profile.id }, (err, result) => {
+            //if account have
             if (result) {
                 //console.log(result);
                 done(null, result);
-            } else {
+            } 
+            //if account haven't
+            else {
                 let account = new Account({
                     idGoogle: profile.id,
                     displayName: profile.displayName,

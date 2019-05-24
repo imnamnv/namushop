@@ -19,18 +19,20 @@ module.exports.index = (req, res) => {
             //console.log(total[0]);
             res.render('../views/index.pug', {
                 carousels: carousels,
+                user:req.user,
                 products: total[0]
             });
         });
     });
 }
 
-//detail page
+//detail product
 module.exports.productDetail = (req, res) => {
     Product.findById(req.params.id)
         .then((detail) => {
-            res.render('../views/products/detail', {
-                detail: detail
+            res.render('../views/products/detail.pug', {
+                detail: detail,
+                user:req.user
             });
         }).catch((err) => {
             console.log(err);
@@ -51,7 +53,6 @@ module.exports.listPro = (req, res) => {
             }
             total.push(array);
         }
-        //console.log(total[0]);
         res.render('../views/products/list-product.pug', {
             products: total
         });
