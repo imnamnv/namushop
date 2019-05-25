@@ -63,19 +63,22 @@ block content
                     td.pt-3.text-center(data-th='Subtotal') #{detail.count}
                     td(data-th='TotalCount')
                         input.form-control.text-center(type='number', value='1')
-                    td.pt-3.text-center(data-th='Subtotal') 150.00
-                    td.actions(data-th='')
-                        button.btn.btn-info.btn-sm
-                             i.fa.fa-refresh
-                        button.btn.btn-danger.btn-sm
-                             i.fa.fa-trash-o
+                    td.pt-3.text-center(data-th='Subtotal') $#{detail.price}
+                    form(action="/user/cart",method="POST")
+                        input(type="hidden", value=detail,name='detailPro')
+                        td.actions(data-th='')
+                            button.btn.btn-info.btn-sm(type='submit')
+                                i.fa.fa-refresh
+                            button.btn.btn-danger.btn-sm
+                                i.fa.fa-trash-o
             tfoot
                 tr.visible-xs
                     td.text-center
                         strong Total 1.99
                 tr
                     td
-                        button.btn-back.btn.btn-primary(type='button') Primary
+                        a(href='/user/cart')
+                            button.btn-back.btn.btn-primary(type='button') Primary
                     td.hidden-xs(colspan='4')
                     td.hidden-xs.text-center
                         strong Total $150.00

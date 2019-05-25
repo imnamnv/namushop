@@ -54,7 +54,8 @@ module.exports.listPro = (req, res) => {
             total.push(array);
         }
         res.render('../views/products/list-product.pug', {
-            products: total
+            products: total,
+            user: req.user
         });
     });
 }

@@ -22,6 +22,7 @@ router.get('/detail',passport.authenticate('google'),(req,res)=>{
 });
 router.get('/',authCheck,controller.detail);
 router.post('/',authCheck,controller.addInformation);
+router.post('/cart',authCheck,controller.cart);
 
 
 module.exports = router;
