@@ -5,9 +5,9 @@ const Product = require('../models/product.model');
 const mongoose = require('mongoose');
 
 module.exports.login = (req, res) => {
-    if(req.user){
+    if (req.user) {
         res.redirect('/user');
-    }else{
+    } else {
         res.render('../views/user/login.pug');
     }
 }
@@ -16,43 +16,53 @@ module.exports.detail = (req, res) => {
         user: req.user
     });
 }
-module.exports.addInformation =(req,res)=>{
+module.exports.addInformation = (req, res) => {
     var idAccount = req.user._id;
     //find and update account
-    Account.findOneAndUpdate({"_id": idAccount},{$set:{
-        displayName: req.body.name,
-        phone: req.body.phone,
-        address: req.body.location 
-    }},(doc)=>{
+    Account.findOneAndUpdate({ "_id": idAccount }, {
+        $set: {
+            displayName: req.body.name,
+            phone: req.body.phone,
+            address: req.body.location
+        }
+    }, (doc) => {
         //console.log(doc);
     });
     res.redirect('/user');
 }
-module.exports.cart =(req,res)=>{
-    // res.render('../views/user/cart.pug',{
-    //     detailPro: JSON.parse(req.body.detailPro)
-    // });
-    // Cart.findOne({idUser: req.user._id}, function(err, doc) {
-    //     res.render('result:       ' + doc);
-    //   });
-    Cart.findOneAndUpdate({"idUser": req.user._id,"status":false},{"userName": "Test" }, function(err, doc){ 
-        //If the cart(not success) is null
-        if(!doc){
+module.exports.postCart = (req, res) => {
+    var elementPro = JSON.parse(req.body.detailPro);
+    Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
+        //if cart(not success) is not null: create cart)
+        if (!data) {
             let cart = new Cart({
                 idUser: req.user._id,
-                userName:req.user.displayName,
+                userName: req.user.displayName,
                 total: req.body.detailPro.price,
-                detail: [req.body.detailPro],
+                detail: [elementPro],
                 date: Date.now(),
                 status: false
             });
+            //save to database
             cart.save().then((data) => {
-                console.log(data);
+                res.redirect('/user/cart');
             });
         }
-        else{
-            //if cart(not success) is not null: add product to the detail)
-            console.log(doc);
+        //if cart(not success) is not null: add product to the detail)
+        else {
+            data.detail.unshift(elementPro);
+            Cart.findOneAndUpdate({ "idUser": req.user._id, "status": false }, { "detail": data.detail }, function (err, doc) {
+                res.redirect('/user/cart');
+            });
         }
-      });
+    });
 }
+
+module.exports.cart = (req, res) => {
+    Cart.find().then(function (cart) {
+        res.render('../views/user/cart.pug', {
+            cart: cart
+        });
+    });
+}
+
