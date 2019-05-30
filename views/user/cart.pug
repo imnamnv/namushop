@@ -1,3 +1,66 @@
-h1 Cart 
-h1 #{cart[0].userName}
-h1 #{cart[0].date}
+extends ../layouts/common
+block header
+    nav(style="background:white !important").navbar.navbar-expand-lg.navbar-light.bg-light
+        .navbar-brand(href='#',style='width:25% !important;height:80%')
+            img.img-pro.card-img-top(src='./imgs/logo.png',style='width:50%;height:25%')
+        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarSupportedContent', aria-controls='navbarSupportedContent', aria-expanded='false', aria-label='Toggle navigation')
+            span.navbar-toggler-icon
+        #navbarSupportedContent.collapse.navbar-collapse
+            ul.navbar-nav.mr-auto
+                li.nav-item.active
+                    a.nav-link(href='/').pr-5
+                        | Home 
+                        span.sr-only (current)
+                li.dropdown.nav-item.active
+                    a.nav-link(href='#').pr-5
+                        | Category 
+                        span.sr-only (current)
+                    .dropdown-content
+                        a(href='#') Link 1
+                        a(href='#') Link 2
+                        a(href='#') Link 3
+                li.nav-item.active
+                    a.nav-link(href='#').pr-5
+                        | Contact
+                        span.sr-only (current)
+            div(style='width:6% !important')   
+                if user==null
+                    a(href='/user/login')               
+                        img.img-pro.card-img-top(src='./imgs/account.png',style='width:50%;height:6%')
+                else 
+                    a(href='/user/login')               
+                        img.img-pro(src=''+user.photos,style='width:50%;height:6%; border: 1px;border-radius: 5px;')  
+            div(style='width:6% !important')   
+                a(href='/user/cart')               
+                    img.img-pro.card-img-top(src='../imgs/cart.png',style='width:50%;height:6%')                    
+            form.form-inline.my-2.my-lg-0
+                input.form-control.mr-sm-2(type='search', placeholder='Search', aria-label='Search')
+                button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
+block content
+    .w-75.p-3.container
+        table.table.table-hover#cart
+            thead
+                tr.table-success.d-flex
+                    th(scope='col').col-3 #
+                    th(scope='col').col-3 Product Name
+                    th(scope='col').col-3 Product Image
+                    th(scope='col').col-2 Price
+                    th(scope='col').col-1
+            tbody
+                each row in cart[0].detail
+                    tr.table-success.d-flex
+                        th(scope='row').col-3#stt
+                        td.col-3 
+                            img(src='../'+row.path,style='width:50%;')
+                        td.col-3 #{row.name}
+                        td#price.col-2 #{row.price}$
+                        td.col-1
+                            button.btn.btn-danger(type='button') X
+            tr.table-success
+                    th  Total: 
+                        span#total
+                    
+    script.
+        setTotalPrice();                
+block footer    
+    include ../layouts/footer
