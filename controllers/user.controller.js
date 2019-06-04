@@ -61,8 +61,22 @@ module.exports.postCart = (req, res) => {
 module.exports.cart = (req, res) => {
     Cart.find().then(function (cart) {
         res.render('../views/user/cart.pug', {
+            user : req.user,
             cart: cart
         });
     });
+}
+
+//delete item in cart
+module.exports.deleteItem = (req,res)=>{
+    var idItem = req.params.id;
+    Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
+        data.detail=data.detail.filter((e)=>e._id !=idItem);
+        Cart.findOneAndUpdate({ "idUser": req.user._id, "status": false }, { "detail": data.detail }, function (err, doc) {
+            
+        });
+        res.send(data);
+
+    })
 }
 

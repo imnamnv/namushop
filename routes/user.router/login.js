@@ -24,6 +24,8 @@ router.get('/',authCheck,controller.detail);
 router.post('/',authCheck,controller.addInformation);
 router.post('/cart',authCheck,controller.postCart);
 router.get('/cart',authCheck,controller.cart);
+router.delete('/cart/:id',authCheck,controller.deleteItem);
+
 
 
 

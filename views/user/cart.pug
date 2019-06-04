@@ -55,12 +55,11 @@ block content
                         td.col-3 #{row.name}
                         td#price.col-2 #{row.price}$
                         td.col-1
-                            button.btn.btn-danger(type='button') X
-            tr.table-success
+                            button.delete.btn.btn-danger(type='button',value=''+row._id) X
+            tfoot.table-success
                     th  Total: 
                         span#total
-                    
     script.
-        setTotalPrice();                
+        setTotalPrice();  
 block footer    
     include ../layouts/footer
