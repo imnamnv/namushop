@@ -30,29 +30,38 @@ module.exports.addInformation = (req, res) => {
     });
     res.redirect('/user');
 }
+
+//add item to cart
 module.exports.postCart = (req, res) => {
-    var elementPro = JSON.parse(req.body.detailPro);
+    // /var elementPro = JSON.parse(req.body.detailPro);
+    var elementPro = JSON.parse(req.body.proAdd);
+    //res.send(elementPro);
+
     Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
         //if cart(not success) is not null: create cart)
         if (!data) {
             let cart = new Cart({
                 idUser: req.user._id,
                 userName: req.user.displayName,
-                total: req.body.detailPro.price,
+                total: elementPro.price,
                 detail: [elementPro],
                 date: Date.now(),
                 status: false
             });
             //save to database
             cart.save().then((data) => {
-                res.redirect('/user/cart');
+                res.send(elementPro);
             });
         }
         //if cart(not success) is not null: add product to the detail)
         else {
+            //find old total
+            var total =  data.total;
             data.detail.unshift(elementPro);
-            Cart.findOneAndUpdate({ "idUser": req.user._id, "status": false }, { "detail": data.detail }, function (err, doc) {
-                res.redirect('/user/cart');
+            total += elementPro.price;
+            console.log(total);
+            Cart.findOneAndUpdate({ "idUser": req.user._id, "status": false }, { "detail": data.detail,"total":total }, function (err, doc) {
+                res.send(elementPro);
             });
         }
     });

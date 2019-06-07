@@ -40,6 +40,7 @@ block content
     .w-100.container.p-0
         div.row
             div.col-8
+                input#pro(type="hidden",value=detail)
                 table.table.table-hover.table-condensed
                     thead
                         tr
@@ -65,10 +66,8 @@ block content
                             td.w-100
                                 input.form-control.text-center(type='number', value='1')
                             td.pt-3.text-center.w-100 $#{detail.price}
-                            form(action="/user/cart",method="POST")
-                                input(type="hidden", value=detail,name='detailPro')
-                                td.actions.w-100
-                                    button.btn.btn-rounded.btn-primary(type="Submit")
+                            td.actions.w-100
+                                button.btn.btn-rounded.btn-primary()#addToCart
                                         | Add to Cart
             div.col-4
                 table.table.table-hover#cart
@@ -80,18 +79,19 @@ block content
                             th(scope='col').col-2 Price
                             th(scope='col').col-1
                     tbody#tbodyAjax
-                        each row in cart.detail
-                            tr.table-success.d-flex
-                                th(scope='row').col-1#stt
-                                td.col-3 
-                                    img(src='../'+row.path,style='width:50%;')
-                                td.col-3 #{row.name}
-                                td#price.col-2 #{row.price}$
-                                td.col-1
-                                    button.delete.btn.btn-danger(type='button',value=''+row._id) X
-                    tfoot.table-success
-                            th  Total: 
-                                span#total
+                        if cart != null
+                            each row in cart.detail
+                                tr.table-success.d-flex
+                                    th(scope='row').col-1#stt
+                                    td.col-3 
+                                        img(src='../'+row.path,style='width:50%;')
+                                    td.col-3 #{row.name}
+                                    td#price.col-2 #{row.price}$
+                                    td.col-1
+                                        button.delete.btn.btn-danger(type='button',value=''+row._id) X
+                        tfoot.table-success
+                                th  Total: 
+                                    span#total
     script.
         setTotalPrice();  
                     
