@@ -42,12 +42,12 @@ block content
             thead
                 tr.table-success.d-flex
                     th(scope='col').col-3 #
-                    th(scope='col').col-3 Product Name
                     th(scope='col').col-3 Product Image
+                    th(scope='col').col-3 Product Name
                     th(scope='col').col-2 Price
                     th(scope='col').col-1
-            tbody
-                each row in cart[0].detail
+            tbody#tbodyAjax
+                each row in cart.detail
                     tr.table-success.d-flex
                         th(scope='row').col-3#stt
                         td.col-3 

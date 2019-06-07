@@ -1,5 +1,6 @@
 var Carousel = require('../models/carousel.model');
 var Product = require('../models/product.model');
+const Cart = require('../models/cart.model');
 
 //home page
 module.exports.index = (req, res) => {
@@ -30,10 +31,14 @@ module.exports.index = (req, res) => {
 module.exports.productDetail = (req, res) => {
     Product.findById(req.params.id)
         .then((detail) => {
-            res.render('../views/products/detail.pug', {
-                detail: detail,
-                user:req.user
-            });
+            Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
+                res.render('../views/products/detail.pug', {
+                    detail: detail,
+                    user:req.user,
+                    cart: data
+                });
+            })
+            
         }).catch((err) => {
             console.log(err);
         });

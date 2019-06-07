@@ -59,12 +59,12 @@ module.exports.postCart = (req, res) => {
 }
 
 module.exports.cart = (req, res) => {
-    Cart.find().then(function (cart) {
+    Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
         res.render('../views/user/cart.pug', {
             user : req.user,
-            cart: cart
+            cart: data
         });
-    });
+    })
 }
 
 //delete item in cart
