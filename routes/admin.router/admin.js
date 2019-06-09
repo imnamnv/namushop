@@ -13,5 +13,9 @@ router.get('/carousel',controller.carousel);
 router.post('/carousel',upload.array('carousels',12),controller.uploadImgs1);
 router.get('/product',controller.product);
 router.post('/product',upload.single('avatar'),controller.uploadProduct);
+//router.post('/product',upload.single('avatar'),controller.uploadProduct);
+router.get('/pay',controller.pay);
+
+
 
 module.exports = router;

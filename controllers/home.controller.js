@@ -31,13 +31,20 @@ module.exports.index = (req, res) => {
 module.exports.productDetail = (req, res) => {
     Product.findById(req.params.id)
         .then((detail) => {
-            Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
+            if(req.user==null){
+                res.render('../views/products/detail.pug', {
+                    detail: detail
+                });
+            }else{
+                Cart.findOne(({ "idUser": req.user._id, "status": false }), (err, data) => {
                 res.render('../views/products/detail.pug', {
                     detail: detail,
                     user:req.user,
                     cart: data
                 });
             })
+            }
+            
             
         }).catch((err) => {
             console.log(err);

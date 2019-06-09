@@ -1,6 +1,7 @@
 const mongoose = require('mongoose');
 var Carousel = require('../models/carousel.model');
 var Product = require('../models/product.model');
+const Cart = require('../models/cart.model');
 
 //index page
 module.exports.index = (req, res) => {
@@ -19,7 +20,7 @@ module.exports.carousel = (req, res) => {
 //product page
 module.exports.product = (req, res) => {
     res.render('../views/admin/product.pug');
-    
+
 }
 
 //Upload Carousel
@@ -41,7 +42,7 @@ module.exports.uploadImgs1 = (req, res) => {
 }
 
 //Upload products
-module.exports.uploadProduct = (req,res)=>{
+module.exports.uploadProduct = (req, res) => {
     let product = new Product({
         name: req.body.name,
         path: req.file.path.split('\\').slice(1).join('\\'),
@@ -49,15 +50,28 @@ module.exports.uploadProduct = (req,res)=>{
         detail: req.body.detail,
         count: Number(req.body.count),
         status: true,
-        date:  Date.now()
+        date: Date.now()
     });
-    if(product.count <=0){
+    if (product.count <= 0) {
         product.status = false;
     }
-    product.save().then((data)=>{
+    product.save().then((data) => {
         console.log(data);
     });
     res.redirect('/node-admin');
 
 }
+
+//View Pay
+module.exports.pay = (req, res) => {
+    Cart.find({"status":true}).then(function (carts) {
+        res.render('../views/admin/carts.pug',{
+            carts:carts
+        });
+    });
+
+
+
+}
+
 

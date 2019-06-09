@@ -38,7 +38,6 @@ block header
                 button.btn.btn-outline-success.my-2.my-sm-0(type='submit') Search
 block content
     .w-75.p-3.container
-        input(type="hidden")
         table.table.table-hover#cart
             thead
                 tr.table-success.d-flex
@@ -48,18 +47,21 @@ block content
                     th(scope='col').col-2 Price
                     th(scope='col').col-1
             tbody#tbodyAjax
-                each row in cart.detail
-                    tr.table-success.d-flex
-                        th(scope='row').col-3#stt
-                        td.col-3 
-                            img(src='../'+row.path,style='width:50%;')
-                        td.col-3 #{row.name}
-                        td#price.col-2 #{row.price}$
-                        td.col-1
-                            button.delete.btn.btn-danger(type='button',value=''+row._id) X
-            tfoot.table-success
-                    th  Total: 
-                        span#total
+                if(cart!=null)
+                    each row in cart.detail
+                        tr.table-success.d-flex
+                            th(scope='row').col-3#stt
+                            td.col-3 
+                                img(src='../'+row.path,style='width:50%;')
+                            td.col-3 #{row.name}
+                            td#price.col-2 #{row.price}$
+                            td.col-1
+                                button.delete.btn.btn-danger(type='button',value=''+row._id) X
+                tfoot.table-success
+                        th  Total: 
+                            span#total
+        if(cart!=null)
+            button#pay.btn.btn-danger(type='button',value=''+cart._id).w-100 Pay
     script.
         setTotalPrice();  
 block footer    

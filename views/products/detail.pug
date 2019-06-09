@@ -67,8 +67,12 @@ block content
                                 input.form-control.text-center(type='number', value='1')
                             td.pt-3.text-center.w-100 $#{detail.price}
                             td.actions.w-100
-                                button.btn.btn-rounded.btn-primary()#addToCart
-                                        | Add to Cart
+                                if(user!=null)
+                                    button.btn.btn-rounded.btn-primary()#addToCart
+                                            | Add to Cart
+                                else
+                                    a.button(href='/user/login').btn.btn-rounded.btn-primary Login to Add to cart
+
             div.col-4
                 table.table.table-hover#cart
                     thead

@@ -1,0 +1,31 @@
+extends ../layouts/common
+block content
+    .w-75.p-3.container
+        div.row
+            div.col-5
+                table.table.table-hover#cart
+                        thead
+                            tr.table-success.d-flex
+                                th(scope='col').col-3 #
+                                th(scope='col').col-3.w-25 Name
+                                th(scope='col').col-3 Total
+                                th(scope='col').col-3 Date
+                        tbody
+                                each row in carts
+                                    tr.table-success.d-flex
+                                        th(scope='row').col-3#stt
+                                        td.col-3.w-25
+                                            button.btn.btn-link(type='button',value=row._id)#infor #{row.userName}
+                                        td.col-3 #{row.total}$
+                                        td.col-3 #{row.date}
+            div.col-7
+                table.table.table-hover#cart
+                        thead
+                            tr.table-success.d-flex
+                                th(scope='col').col-1 #
+                                td(scope='col').col-3 Name
+                                td(scope='col').col-5 Image
+                                td(scope='col').col-2 Price
+                        tbody#tbodyAjax
+        script.
+            setTotalPrice();  
